@@ -37,22 +37,30 @@ Status.appendChild(StatusInput);
 
 const submit = document.createElement("button");
 submit.textContent = "Submit";
+const cancel = document.createElement("button");
+cancel.textContent = "Cancel";
 
 form.appendChild(title);
 form.appendChild(author);
 form.appendChild(pages);
 form.appendChild(Status);
 form.appendChild(submit);
+form.appendChild(cancel);
 
 const newBook = document.createElement("button");
 newBook.textContent = "New Book";
+document.body.appendChild(newBook);
 newBook.addEventListener("click",()=>(
     document.body.appendChild(form)
 ));
+
+cancel.addEventListener("click",()=>{
+    form.remove();
+})
+
 document.body.appendChild(newBook);
 
 function addBookToLibrary(){
-    
     const book = new Book(titleInput.value ,authorInput.value ,pagesInput.value ,StatusInput.checked);
     myLibrary.push(book);
 }
