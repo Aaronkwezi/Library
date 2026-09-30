@@ -26,8 +26,9 @@ const pagesInput = document.createElement("input");
 pages.appendChild(pagesInput)
 const Status = document.createElement("div");
 Status.textContent = "Click here if you have read this book";
+
 const StatusInput = document.createElement("input");
-StatusInput.type = "radio";
+StatusInput.type = "checkbox";
 Status.appendChild(StatusInput);
 const submit = document.createElement("button");
 submit.textContent = "Submit";
@@ -50,17 +51,16 @@ function addBookToLibrary(){
     myLibrary.push(book);
 }
 
-
-
 const libraryDisplay = document.createElement("div");
-libraryDisplay.textContent="";
 function display(){
+    libraryDisplay.textContent="";
     myLibrary.forEach((book)=>{
         const bookCard = document.createElement("div");
-        bookCard.appendChild(book.title);
-        bookCard.textContent = `Author: ${book.author}, Pages: ${book.pages}`
+        bookCard.textContent = `Title: ${book.title},Author: ${book.author}, Pages: ${book.pages}`
         const statusBtn = document.createElement("button");
+        statusBtn.textContent = book.Status ? "Read":"Not Read";
         bookCard.appendChild(statusBtn);
+
         statusBtn.addEventListener("click",()=>{
             book.changeStatus();
             statusBtn.textContent = book.Status ? "Read":"Not Read";
