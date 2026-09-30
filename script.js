@@ -10,23 +10,29 @@ function Book(title,author,pages,Status){
 Book.prototype.changeStatus = function(){
     this.Status=!this.Status;
 }
+const newBook = document.createElement("button");
+newBook.textContent = "New Book";
+document.body.appendChild(newBook);
 
 const form = document.createElement("form");
 form.classList.add('form');
 const title = document.createElement("div");
 title.textContent = "Title";
 const titleInput = document.createElement("input");
+titleInput.required = true;
 title.appendChild(titleInput);
 
 const author = document.createElement("div");
 author.textContent = "Author";
 const authorInput = document.createElement("input");
+authorInput.required = true;
 author.appendChild(authorInput);
 
 const pages = document.createElement("div");
 pages.textContent = "Number of Pages";
 const pagesInput = document.createElement("input");
 pagesInput.type = "Number";
+pagesInput.required = true;
 pages.appendChild(pagesInput);
 
 const Status = document.createElement("div");
@@ -37,6 +43,7 @@ Status.appendChild(StatusInput);
 
 const submit = document.createElement("button");
 submit.textContent = "Submit";
+submit.type = "submit";
 const cancel = document.createElement("button");
 cancel.textContent = "Cancel";
 
@@ -47,9 +54,7 @@ form.appendChild(Status);
 form.appendChild(submit);
 form.appendChild(cancel);
 
-const newBook = document.createElement("button");
-newBook.textContent = "New Book";
-document.body.appendChild(newBook);
+
 newBook.addEventListener("click",()=>(
     document.body.appendChild(form)
 ));
@@ -93,7 +98,7 @@ function display(){
     document.body.appendChild(libraryDisplay);
 }
 
-submit.addEventListener("click",(e)=>{
+form.addEventListener("submit",(e)=>{
     e.preventDefault();
     addBookToLibrary();
     console.log(myLibrary);
