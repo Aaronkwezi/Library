@@ -1,5 +1,35 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #202020;
+}
+h1,h4{
+    color: bisque;
+    text-align: center;
+    margin-top: 20px;
+    cursor: default;
+}
+h1{
+    font-size: 50px;
+    text-shadow: 2px 2px 2px bisque;
+}
+.newBook{
+    align-self: flex-end;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    margin-right: 50px;
+    padding: 10px 20px;
+    background-color: bisque;
+    color: #202020;
+    border: 1px solid bisque;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.newBook:hover{
+    background-color: #202020;
+    color: bisque;
+    border: 2px solid bisque;
 }
 
 .form{
@@ -9,47 +39,113 @@ body{
     align-items: center;
     gap: 10px;
     width: 300px;
+    height: 400px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: bisque;
+    background-color: rgb(32, 32, 32);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .title, .author, .pages{
     display: flex;
     flex-direction: column;
+    color: bisque;
     width: 100%;
     gap: 5px;
+    cursor: default;
+}
+
+.status{
+    color: bisque;
+    cursor: default;
+}
+.status:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .form > .buttons{
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
 }
 
 .bookCard{
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-color: bisque;
+    border-style: solid;
+    border-radius: 10px 20px / 30px;
     padding: 10px;
     margin: 10px 0;
-    background-color: #f9f9f9;
+    color: bisque;
+    background-color: #202020;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     max-width: 200px;
     gap: 10px;
     flex-shrink: 0;
-    
+    box-shadow: 10px 5px 5px bisque;
 }
+
+.input{
+    padding: 5px;
+    border: 1px solid bisque;
+    border-radius: 5px;
+}
+.input:hover{
+    border: 3px solid bisque;
+}
+
+.form > .buttons > button{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: bisque;
+    color: #202020;
+    cursor: pointer;
+}
+.statusBtn, .removebtn{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: bisque;
+    color: #202020;
+    cursor: pointer;
+}
+
+.statusBtn:hover, .removebtn:hover{
+    background-color: #202020;
+    color: bisque;
+    border: 1px solid bisque;
+}
+
+.form > .buttons > button:hover{
+    background-color: #202020;
+    color: bisque;
+    border: 1px solid bisque;
+}
+
 .bookCard h3, .bookCard p{
     margin: 0;
+    color:bisque;
 }
 
 .libraryDisplay{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 30px;
+    height: 100%;
+    margin: 25px;
 }
 
+.emptyLibrary{
+    color: bisque;
+    text-align: center;
+    margin-top: 50px;
+}
 

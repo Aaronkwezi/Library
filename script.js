@@ -7,11 +7,14 @@ function Book(title,author,pages,Status){
     this.Status = Status;
     this.id = crypto.randomUUID();
 }
+
 Book.prototype.changeStatus = function(){
     this.Status=!this.Status;
 }
+
 const newBook = document.createElement("button");
 newBook.textContent = "New Book";
+newBook.classList.add('newBook');
 document.body.appendChild(newBook);
 
 const form = document.createElement("form");
@@ -21,6 +24,7 @@ const title = document.createElement("div");
 title.textContent = "Title";
 const titleInput = document.createElement("input");
 titleInput.required = true;
+titleInput.classList.add('input');
 title.appendChild(titleInput);
 title.classList.add('title');
 
@@ -28,6 +32,7 @@ const author = document.createElement("div");
 author.textContent = "Author";
 const authorInput = document.createElement("input");
 authorInput.required = true;
+authorInput.classList.add('input');
 author.appendChild(authorInput);
 author.classList.add('author');
 
@@ -37,6 +42,7 @@ const pagesInput = document.createElement("input");
 pagesInput.type = "Number";
 pagesInput.required = true;
 pagesInput.min = 1;
+pagesInput.classList.add('input');
 pages.appendChild(pagesInput);
 pages.classList.add('pages');
 
@@ -80,6 +86,11 @@ cancel.addEventListener("click",()=>{
 
 document.body.appendChild(newBook);
 
+const emptyLibrary = document.createElement("h3");
+emptyLibrary.textContent = "Your library is empty, click on 'New Book' to add a book!";
+emptyLibrary.classList.add('emptyLibrary');
+document.body.appendChild(emptyLibrary);
+
 function addBookToLibrary(){
     const book = new Book(titleInput.value ,authorInput.value ,pagesInput.value ,StatusInput.checked);
     myLibrary.push(book);
@@ -90,6 +101,11 @@ libraryDisplay.classList.add('libraryDisplay');
 
 function display(){
     libraryDisplay.textContent="";
+
+    if(myLibrary.length === 0){
+        document.body.appendChild(emptyLibrary);
+    }
+
     myLibrary.forEach((book)=>{
         const bookCard = document.createElement("div");
         bookCard.classList.add('bookCard');
@@ -109,6 +125,7 @@ function display(){
         const statusBtn = document.createElement("button");
         statusBtn.textContent = book.Status ? "Read":"Not Read";
         bookCard.appendChild(statusBtn);
+        statusBtn.classList.add('statusBtn');
 
         statusBtn.addEventListener("click",()=>{
             book.changeStatus();
@@ -117,6 +134,8 @@ function display(){
         const removebtn = document.createElement("button");
         removebtn.textContent = "Remove";
         bookCard.appendChild(removebtn);
+        removebtn.classList.add('removebtn');
+
         libraryDisplay.appendChild(bookCard);
         removebtn.addEventListener("click",()=>{
            const index =  myLibrary.findIndex(item => item.id === book.id)
@@ -130,6 +149,7 @@ function display(){
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     addBookToLibrary();
+    emptyLibrary.remove();
     console.log(myLibrary);
     display();
     form.reset();
